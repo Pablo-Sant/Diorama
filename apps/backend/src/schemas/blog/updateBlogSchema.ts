@@ -4,6 +4,13 @@ import blogSchema from "./blogSchema";
 
 const updateBlogSchema = z
   .object({
+
+    params: z
+      .object({
+        id: z.string()
+      })
+      .strict(),
+
     request: z
       .object({
         titulo: z
@@ -31,3 +38,18 @@ const updateBlogSchema = z
       .strict(),
   })
   .strict();
+
+
+export type EditarBlogParamsSchema = z.infer<
+  typeof updateBlogSchema.shape.params
+>;
+
+export type EditarBlogRequestSchema = z.infer<
+  typeof updateBlogSchema.shape.request
+>;
+
+export type EditarBlogResponseSchema = z.infer<
+  typeof updateBlogSchema.shape.response
+>;
+
+export default updateBlogSchema;

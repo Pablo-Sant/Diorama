@@ -30,3 +30,14 @@ const criarBlogSchema = z
       .strict(),
   })
   .strict();
+
+
+export type CriarBlogRequestSchema = z.infer<
+  typeof criarBlogSchema.shape.request
+>;
+
+export type CriarBlogResponseSchema = z.infer<
+  typeof criarBlogSchema.shape.response
+>;
+
+export default criarBlogSchema;
